@@ -8,12 +8,20 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "prisma": "^6.3.0",
+    "ts-node": "^10.9.2",
     "turbo": "^2.4.0"
   },
   "scripts": {
-    "dev": "turbo run dev"
+    "dev": "turbo run dev --parallel"
   },
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "prisma": {
+    "seed": "ts-node apps/api/src/database/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.3.0"
+  }
 }

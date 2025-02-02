@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Professional {
+  id               Int      @id @default(autoincrement())
+  type             String   @default("Organization")
+  orgPracId        String   @unique @map("org_prac_id")
+  usernameUrl      String   @unique @map("username_url")
+  name             String
+  ranking          Int
+  photo            String?
+  category         String
+  subCategories    String[] @map("sub_categories")
+  rating           Float
+  totalAppointment Int      @map("total_appointment")
+  zones            String[]
+  branches         String[]
+  areaOfPractice   String   @map("area_of_practice")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  @@map("professionals")
+}

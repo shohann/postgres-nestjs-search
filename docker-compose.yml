@@ -1,0 +1,47 @@
+# services:
+#   chat_db:
+#     image: postgres:16.2
+#     environment:
+#       - POSTGRES_PASSWORD=postgres
+#       - POSTGRES_USER=chat_db_user
+#       - POSTGRES_DB=chat_db
+#     ports:
+#       - 5431:5432
+#     volumes:
+#       - db-data:/var/lib/postgresql/data
+#       - ./apps/api/src/database/db-init:/docker-entrypoint-initdb.d
+# volumes:
+#   db-data:
+
+services:
+  chat_db:
+    image: postgres:16.2
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=chat_db_user
+      - POSTGRES_DB=chat_db
+    ports:
+      - "5431:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./apps/api/src/database/db-init:/docker-entrypoint-initdb.d
+
+  apps:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DATABASE_URL=postgresql://chat_db_user:postgres@chat_db:5432/chat_db
+    ports:
+      - "4000:4000"
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://chat_db_user:postgres@chat_db:5432/chat_db
+    depends_on:
+      - chat_db
+    volumes:
+      - ./apps/api:/app/apps/api
+      - ./apps/client:/app/apps/client
+
+volumes:
+  db-data:
