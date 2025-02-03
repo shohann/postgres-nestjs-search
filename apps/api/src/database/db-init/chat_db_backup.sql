@@ -17,20 +17,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: fuzzystrmatch; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS fuzzystrmatch WITH SCHEMA public;
-
-
---
--- Name: EXTENSION fuzzystrmatch; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance between strings';
-
-
---
 -- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -165,9 +151,9 @@ ALTER TABLE ONLY public.professionals ALTER COLUMN id SET DEFAULT nextval('publi
 --
 
 COPY public.professionals (id, type, org_prac_id, username_url, name, ranking, photo, category, sub_categories, rating, total_appointment, zones, branches, area_of_practice, created_at, updated_at) FROM stdin;
-2	Organization	7654321	hospital2_url	Hospital 2	8	https://example.com/hospital2.jpg	Healthcare	{Dentistry,Pediatrics}	4.5	850	{Cal,Tex}	{"Main Branch","Downtown Branch"}	regional	2025-01-30 16:40:01.307	2025-01-30 16:40:01.307
-3	Organization	9876543	clinic1_url	Specialty Clinic 1	9	https://example.com/clinic1.jpg	Healthcare	{Cardiology,"Internal Medicine"}	4.8	1200	{NY,NJ}	{Manhattan,Brooklyn}	local	2025-01-30 16:40:01.312	2025-01-30 16:40:01.312
-1	Organization	1234567	hospital1_url	Hospital 1	10	https://example.com/hospital1.jpg	Doctor	{Medicine,Eye}	4.7	1000	{Uttara,Nev,NY,""}	{"branch 1","Branch 2",Dhaka}	local	2025-01-30 16:40:01.295	2025-01-31 07:53:34.447
+1	Organization	1234567	hospital1_url	Hospital 1	10	https://example.com/hospital1.jpg	Doctor	{Medicine,Eye}	4.7	1000	{Cal,Nev,NY,Dhaka}	{"branch 1","Branch 2",Uttara}	local	2025-01-31 13:03:11.386	2025-01-31 13:16:56.905
+2	Organization	7654321	hospital2_url	Hospital 2	8	https://example.com/hospital2.jpg	Nurse	{Dentistry,Pediatrics}	4.9	850	{Cal,Tex}	{"Main Branch","Downtown Branch"}	regional	2025-01-31 13:03:11.393	2025-02-03 06:49:32.01
+3	Organization	9876543	clinic1_url	Specialty Clinic 1	9	https://example.com/clinic1.jpg	Doctor	{Cardiology,"Internal Medicine"}	4.8	1200	{NY,NJ}	{Manhattan,Brooklyn}	local	2025-01-31 13:03:11.398	2025-02-03 07:21:29.082
 \.
 
 
