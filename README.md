@@ -93,14 +93,6 @@ docker compose up
 
 ---
 
-### **How It Works**
-
-- **Trigram Index**: Powers fuzzy search with `pg_trgm` (e.g., matches “cal” to “California”).
-- **Full-Text Search**: Combines `category`, `zones`, and `branches` into a searchable text vector.
-- **React UI**: Simple search bar with mic button. Results show name, rating, and location.
-
----
-
 ### **Notes**
 
 - The entire app (frontend, backend, database) runs in isolated Docker containers.
