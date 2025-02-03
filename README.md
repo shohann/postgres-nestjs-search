@@ -31,7 +31,7 @@
 DATABASE_URL="postgresql://chat_db_user:postgres@localhost:5431/chat_db"
 ```
 
-3.  **Set Up Environment Variables**
+3.  **Build and Start the App with Docker**
 
 ```bash
 # Build all Docker images (backend, frontend, PostgreSQL)
